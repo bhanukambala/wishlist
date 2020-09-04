@@ -49,18 +49,18 @@ public class WishedItemController {
 	}
 
 	private CustomerDto fetchWishedItemByCustomer(Integer customerId) {
-		String url="http://customermgt/customers/get/"+customerId;
+		String url="http://customerMgt/customers/get/"+customerId;
 		CustomerDto dto=restTemplate.getForObject(url,CustomerDto.class);
 		return dto;
 		}
 
 	private ProductDto fetchWishedItemsByProduct(String productId) {
-		String url = "http://productmgt/products/get/" + productId;
+		String url = "http://productMgt/products/get/" + productId;
 		ProductDto dto = restTemplate.getForObject(url, ProductDto.class);
 		return dto;
 		}
 
-	@GetMapping("/customer/{customerId}")
+	@GetMapping("/get/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public List<WishedItemDto> findAllById(@PathVariable("customerId")Integer customerId) {
 		List<WishedItem>list = service.findAllById(customerId);
